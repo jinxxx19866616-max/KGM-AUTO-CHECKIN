@@ -31,16 +31,20 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 安装依赖
-        run: npm run install
+        run: |
+          cd api
+          npm install
         if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
 
       - name: 执行签到
-        run: npm run main
+        run: |
+          cd api
+          npm run main
         env:
-          USERINFO: ${{secrets.USERINFO}}
+          USERINFO: ${{ secrets.USERINFO }}
           PAT: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-          # 通知渠道
+          # 推送通知（不需要的可以不填对应的Secret）
           WECOM_BOT_KEY: ${{ secrets.WECOM_BOT_KEY }}
           DINGTALK_BOT_KEY: ${{ secrets.DINGTALK_BOT_KEY }}
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
