@@ -2,7 +2,7 @@ name: 签到
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 17 * * *'
+    - cron: '10 9 * * *' # UTC 9:10 = 北京时间17:10
 permissions:
   contents: read
   actions: write
@@ -39,7 +39,7 @@ jobs:
       - name: 执行签到
         run: |
           cd api
-          npm run main
+          node main.js
         env:
           USERINFO: ${{ secrets.USERINFO }}
           PAT: ${{ secrets.PAT }}
