@@ -37,7 +37,7 @@ jobs:
       - name: 执行签到
         run: npm run main
         env:
-          USERINFO: ${{ "userid":1536970903,"token":"92047b6957e1ca5294c83ab20547d164abf4dcaaaf711cdd80d210089fe4702d"}}
+          USERINFO: ${{secret.USERINFO}}
           PAT: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           # 通知渠道
