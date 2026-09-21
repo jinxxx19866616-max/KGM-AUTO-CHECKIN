@@ -37,7 +37,7 @@ jobs:
       - name: 执行签到
         run: npm run main
         env:
-          USERINFO: ${{secret.USERINFO}}
+          USERINFO: ${{secrets.USERINFO}}
           PAT: ${{ secrets.PAT }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           # 通知渠道
